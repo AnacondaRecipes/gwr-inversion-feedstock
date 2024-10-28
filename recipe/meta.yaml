@@ -1,0 +1,45 @@
+{% set name = "gwr-inversion" %}
+{% set version = "1.0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/gwr-inversion-{{ version }}.tar.gz
+  sha256: 18479fee1985e8ee4ff928efbe96ffc542fe83351400f41e43ab4d9d268c7988
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - python >=3.7
+    - pip
+  run:
+    - python >=3.7
+    - numpy >=1.17
+    - mpmath >=1.1.0
+
+test:
+  imports:
+    - gwr_inversion
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/petbox-dev/gwr
+  summary: GWR Algorithm Numerical Laplace Inversion
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/49247
+    reason: Client request
+  recipe-maintainers:
+    - ianaobi 
