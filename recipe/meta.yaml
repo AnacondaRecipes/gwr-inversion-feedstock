@@ -43,7 +43,7 @@ about:
 extra:
   anaconda-services:
     ref: https://anaconda.zendesk.com/agent/tickets/49247
-    reason: Client request
+    reason: Dependency fo pyrestoolbox
   recipe-maintainers:
     - ianaobi 
     - bkreider
